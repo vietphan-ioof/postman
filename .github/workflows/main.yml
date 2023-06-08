@@ -1,0 +1,18 @@
+name: Run Postman test
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repos
+        uses: actions/checkout@v3
+      - name: run newman test collection
+        uses: matt-ball/newman-action@master
+        with:
+          collection: src/public-api.json
+          #environment: postman_environment.json
