@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "576f44ee-5d5d-4779-a30a-739139252c8c",
+		"name": "public-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23249879"
+	},
+	"item": [
+		{
+			"name": "get-country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.expect(pm.response.code).to.eql(200);",
+							"});",
+							"",
+							"//pm.test(\"Status code is 200\", function() {",
+							"//  pm.response.to.have.status(200);",
+							"//});",
+							"",
+							"pm.test(\"The response has all properties\", () => {",
+							"    const responseJson = pm.response.json();",
+							"    //console.log(responseJson[0].name.common)",
+							"    pm.expect(responseJson[0].name.common).to.eql('Australia')",
+							"    pm.expect(responseJson[0].name.official).to.eql('Commonwealth of Australia')",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/name/australia?fullText=true",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"australia"
+					],
+					"query": [
+						{
+							"key": "fullText",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
